@@ -864,7 +864,6 @@ pre code
 .col-lg-3,
 .col-lg-4,
 .col-lg-5,
-.col-lg-6,
 .col-lg-7,
 .col-lg-8,
 .col-lg-9,
@@ -894,7 +893,13 @@ pre code
     padding-right: 15px;
     padding-left: 15px;
 }
-
+.col-lg-6{
+    position: relative;
+    
+    width: 100%;
+    padding-right: 55px;
+    padding-left: 55px;
+}
 .col
 {
     max-width: 100%; 
