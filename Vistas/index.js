@@ -15,6 +15,22 @@ app.use(bodyParser.urlencoded({extnded: true}));
 
 mongoose.connect("mongodb+srv://Bryan:1234@cluster0.auemh.mongodb.net/Foraneo")
 
+//<link ref="stylesheet" href="../login/css/style.css" type="text/css">
+
+
+
+app.get("/", function(req, res){
+    res.sendFile(__dirname + "/login/login.html" );
+    res.sendFile(__dirname + "/login/css/style.css");
+})
+
+
+
+app.post("/", jsonParser, function (req, res){
+    res.redirect("/");
+})
+
+
 
 
 //creacion del esquema
@@ -26,12 +42,12 @@ const estudiantesSchema = {
 }
 const Estudiantes = mongoose.model("Estudiantes", estudiantesSchema);
 
-app.get("/", function(req, res){
-    res.sendFile(__dirname + "/Signin/sign in.html");
+app.get("/Signin/signin.html", function(req, res){
+    res.sendFile(__dirname + "/Signin/signin.html");
 })
 
 
-app.post("/", jsonParser, function (req, res){
+app.post("/Signin/signin.html", jsonParser, function (req, res){
     console.log(req.body.nombre);
     let newEstudiantes = new Estudiantes({
         nombre:req.body.nombre,
@@ -41,8 +57,40 @@ app.post("/", jsonParser, function (req, res){
     });
     console.log(newEstudiantes);
     newEstudiantes.save();
-    res.redirect("/");
+    res.redirect("/Signin/signin.html");
 })
+
+
+
+app.get("/Pantalla/index.html", function(req, res){
+    res.sendFile(__dirname + "/Pantalla/index.html");
+})
+
+
+app.post("/Pantalla/index.html", jsonParser, function (req, res){
+    
+    res.redirect("/Pantalla/index.html");
+})
+
+
+
+
+
+
+app.get("/Pantalla/transaccion.html", function(req, res){
+    res.sendFile(__dirname + "/Pantalla/transaccion.html");
+})
+
+
+
+app.post("/Pantalla/transaccion.html", jsonParser, function (req, res){
+    res.redirect("/Pantalla/transaccion.html");
+})
+
+
+
+
+
 
 
 const transaccionesSchema = {
@@ -53,12 +101,12 @@ const transaccionesSchema = {
 }
 const Transacciones = mongoose.model("Transacciones", transaccionesSchema);
 
-app.get("/Pantalla/transaccion.html", function(req, res){
-    res.sendFile(__dirname + "/transaccion.html");
+app.get("/Pantalla/index.html", function(req, res){
+    res.sendFile(__dirname + "/Pantalla/index.html");
 })
 
 
-app.post("/Pantalla/transaccion.html", jsonParser, function (req, res){
+app.post("/Pantalla/index.html", jsonParser, function (req, res){
     console.log(req.body.tipo);
     let newTransacciones = new Transacciones({
         tipo:req.body.Tipo_Transaccion,
@@ -68,9 +116,26 @@ app.post("/Pantalla/transaccion.html", jsonParser, function (req, res){
     });
     console.log(newTransacciones);
     newTransacciones.save();
-    res.redirect("/Pantalla/transaccion.html");
+    res.redirect("/Pantalla/index.html");
 })
 
 
 
+
+
+
+app.get("/login/login.html", function(req, res){
+    res.sendFile(__dirname + "/login/login.html");
+})
+
+
+
+app.post("/login/login.html", jsonParser, function (req, res){
+    res.redirect("/login/login.html");
+})
+
+
+
+
 app.listen(3000, ()=>console.log("La aplicacion esta corriendo"));
+
