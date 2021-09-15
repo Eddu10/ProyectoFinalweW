@@ -136,6 +136,83 @@ app.post("/login/login.html", jsonParser, function (req, res){
 
 
 
+app.get("/Pantalla/examples/icons.html", function(req, res){
+    res.sendFile(__dirname + "/Pantalla/examples/icons.html");
+})
+
+
+
+app.post("/Pantalla/examples/icons.html", jsonParser, function (req, res){
+    res.redirect("/Pantalla/examples/icons.html");
+})
+
+
+
+
+
+app.get("/Pantalla/objetivos.html", function(req, res){
+    res.sendFile(__dirname + "/Pantalla/objetivos.html");
+})
+
+
+
+app.post("/Pantalla/objetivos.html", jsonParser, function (req, res){
+    res.redirect("/Pantalla/objetivos.html");
+})
+
+
+
+
+
+app.get("/Pantalla/examples/dashboard.html", function(req, res){
+    res.sendFile(__dirname + "/Pantalla/examples/dashboard.html");
+})
+
+
+
+app.post("/Pantalla/examples/dashboard.html", jsonParser, function (req, res){
+    res.redirect("/Pantalla/examples/dashboard.html");
+})
+
+
+
+app.get("/login/login.html", function(req, res){
+    res.sendFile(__dirname + "/login/login.html");
+})
+
+
+
+app.post("/login/login.html", jsonParser, function (req, res){
+    res.redirect("/login/login.html");
+})
+
+
+//creacion del esquema
+const objetivosSchema = {
+    producto: String,
+    costo: parseFloat()
+}
+const Objetivos = mongoose.model("Objetivos", objetivosSchema);
+
+app.get("/Pantalla/examples/icons.html", function(req, res){
+    res.sendFile(__dirname + "/Pantalla/examples/icons.html");
+})
+
+
+app.post("/Pantalla/examples/icons.html", jsonParser, function (req, res){
+    console.log(req.body.producto);
+    let newObjetivos = new Objetivos({
+        producto:req.body.producto,
+        costo:req.body.costo
+    });
+    console.log(newObjetivos);
+    newObjetivos.save();
+    res.redirect("/Pantalla/examples/icons.html");
+})
+
+
+
+
 
 app.listen(3000, ()=>console.log("La aplicacion esta corriendo"));
 
