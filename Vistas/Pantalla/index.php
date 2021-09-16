@@ -33,19 +33,19 @@
           <!-- Nav items -->
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" href="examples/dashboard.html">
+              <a class="nav-link active" href="examples/dashboard.php">
                 <i class="ni ni-tv-2 text-primary"></i>
                 <span class="nav-link-text">Principal</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="examples/icons.html">
+              <a class="nav-link" href="examples/icons.php">
                 <img src="/Pantalla/assets/img/icons/objetivos.png" alt="">
                 <span class="nav-link-text">Objetivos</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../login/login.html">
+              <a class="nav-link" href="../login/login.php">
                 <img src="./assets/img/icons/salida.png" alt="">
                 <span class="nav-link-text">Salir</span>
               </a>
@@ -123,7 +123,7 @@
               </nav>-->
             </div>
             <div class="col-lg-6 col-5 text-right">
-              <a href="../Pantalla/transaccion.html" class="btn btn-sm btn-neutral">Nueva Transaccion</a>
+              <a href="../Pantalla/transaccion.php" class="btn btn-sm btn-neutral">Nueva Transaccion</a>
               
             </div>
           </div>
@@ -228,22 +228,6 @@
               &copy; Software ESPE 2021 
             </div>
           </div>
-          <!--<div class="col-lg-6">
-            <ul class="nav nav-footer justify-content-center justify-content-lg-end">
-              <li class="nav-item">
-                <a href="https://www.creative-tim.com" class="nav-link" target="_blank">Creative Tim</a>
-              </li>
-              <li class="nav-item">
-                <a href="https://www.creative-tim.com/presentation" class="nav-link" target="_blank">About Us</a>
-              </li>
-              <li class="nav-item">
-                <a href="http://blog.creative-tim.com" class="nav-link" target="_blank">Blog</a>
-              </li>
-              <li class="nav-item">
-                <a href="https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md" class="nav-link" target="_blank">MIT License</a>
-              </li>
-            </ul>
-          </div>-->
         </div>
       </footer>
     </div>

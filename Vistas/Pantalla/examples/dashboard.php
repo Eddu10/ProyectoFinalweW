@@ -37,19 +37,19 @@
           <!-- Nav items -->
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" href="dashboard.html">
+              <a class="nav-link active" href="dashboard.php">
                 <i class="ni ni-tv-2 text-primary"></i>
                 <span class="nav-link-text">Principal</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="icons.html">
+              <a class="nav-link" href="icons.php">
                 <img src="/Pantalla/assets/img/icons/objetivos.png" alt="">
                 <span class="nav-link-text">Objetivos</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../login/login.html">
+              <a class="nav-link" href="../../login/login.php">
                 <img src="/Vistas/Pantalla/assets/img/icons/salida.png" alt="">
                 <span class="nav-link-text">Salir</span>
               </a>
