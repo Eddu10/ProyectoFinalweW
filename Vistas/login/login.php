@@ -41,7 +41,7 @@
 		            	
 								</div>
 								<div class="w-50 text-md-right">
-									<a href="../Signin/signin.html" style="color: #fff">Crear una nueva cuenta</a>
+									<a href="../Signin/signin.php" style="color: #fff">Crear una nueva cuenta</a>
 								</div>
 	            </div>
 	          </form>
@@ -56,7 +56,6 @@
   <script src="js/bootstrap.min.js"></script>
   <script src="js/main.js"></script>
   <script src="js/validacion.js"></script>
-  <script src="../index.js"></script>
 
 	</body>
 </html>

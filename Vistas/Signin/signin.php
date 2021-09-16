@@ -1,3 +1,7 @@
+<?php
+     include('../../config/constantes.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,42 +40,41 @@
 			<div class="login100-more" style="background-image: url('images/5053309.jpg');"></div>
 
 			<div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50" >
-				<form class="login100-form validate-form" action="../Pantalla/index.html" method="POST">
+				<form class="login100-form validate-form" action="" method="POST">
 					<span class="login100-form-title p-b-59">
-						Registro
 					</span>
 
-					<div class="wrap-input100 validate-input" data-validate="Name is required">
+					<div class="wrap-input100 validate-input" data-validate="Nombre es requerido">
 						<span class="label-input100">Nombre Completo</span>
-						<input class="input100" type="text" name="nombre" placeholder="Name...">
+						<input class="input100" type="text" name="nombre">
 						<span class="focus-input100"></span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+					<div class="wrap-input100 validate-input" data-validate = "Correo válido requerido: ex@abc.xyz">
 						<span class="label-input100">Email</span>
-						<input class="input100" type="text" name="email" placeholder="Email addess...">
+						<input class="input100" type="text" name="correo">
 						<span class="focus-input100"></span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate="Username is required">
+					<div class="wrap-input100 validate-input" data-validate="Usuario es requerido">
 						<span class="label-input100">Nombre de Usuario</span>
-						<input class="input100" type="text" name="username" placeholder="Username...">
+						<input class="input100" type="text" name="usuario">
 						<span class="focus-input100"></span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate = "Password is required">
+					<div class="wrap-input100 validate-input" data-validate = "Contraseña requerida">
 						<span class="label-input100">Contraseña</span>
-						<input class="input100" type="text" name="pass" placeholder="*************">
+						<input class="input100" type="text" name="contrasena" placeholder="*************">
 						<span class="focus-input100"></span>
 					</div>
 
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
-							<button class="login100-form-btn">Registrarse</button>
+							<input class="login100-form-btn" type="submit" name="submit" value="Registrarse">
 						</div>
 
-						<a href="/login/login.html" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30">
+						<a href="../login/login.php" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30">
 							Volver
 							<i class="fa fa-long-arrow-right m-l-5"></i>
 						</a>
@@ -100,3 +103,31 @@
 
 </body>
 </html>
+
+<?php
+    if(isset($_POST['submit'])){
+        
+        $usuario = $_POST['usuario'];
+        $nombre = $_POST['nombre'];
+        $correo = $_POST['correo'];
+        $contrasena = $_POST['contrasena'];
+
+        $conn1 = mysqli_connect(SERVIDOR,USERNAME,PASSWORD) or die(mysqli_error());
+
+        $basedatos1 = mysqli_select_db($conn1, BASEDATOS) or die(mysqli_error());
+
+        $sqlcrear = "INSERT INTO estudiante (usuario, nombre, correo, contrasena) 
+        VALUES('$usuario','$nombre', '$correo', '$contrasena')";
+
+        //echo $sqlcrear;
+        $res = mysqli_query($conn1, $sqlcrear);
+
+        if($res == true){
+            //$_SESSION['crear'] = "Tarea creada exitosamente!!";
+            header('location: http://localhost/Proyecto/Vistas/Pantalla/examples/dashboard.php');
+        }else{
+            //$_SESSION['error_crear'] = "Error al crear la tarea!!";
+            header('location: http://localhost/Proyecto/Vistas/Signin/signin.php');
+        }
+    }
+?>

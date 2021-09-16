@@ -1,5 +1,5 @@
 <?php
-     include('../../../config/constantes.php');
+     include('../../config/constantes.php');
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +11,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Añadir objetivo</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/lumen/bootstrap.min.css">
-    <link rel="stylesheet" href="main.css">
 </head>
 
 <body>
@@ -22,22 +21,6 @@
                     <div class="card-header">
                         <h1>Añadir objetivo</h1>
                     </div>
-                   <!-- <div class="card-body">
-                        {{#if contacts}}
-                        <ul class="list-group">
-                            {{#each contacts}}
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                {{firstname}}
-                                {{lastname}} / 
-                                {{email}}
-                                <a href="/delete-contact/{{@key}}" class="btn btn-danger">Delete</a>
-                            </li>
-                            {{/each}}
-                        </ul>
-                        {{else}}
-                            <p>No Contacts Yet.</p>
-                        {{/if}}
-                    </div>-->
                     <div class="card-footer">
                         <form action="" method="POST">
                             <div class="form-group">
@@ -49,9 +32,10 @@
                                 <h5>Costo</h5>
                                 <input type="number" step=".01" name="costo"  class="form-control">
                             </div>
-                            <button class="btn btn-primary btn-block">
+                            <input class="btn btn-primary btn-block" type="submit" name="submit" value="Añadir Objeto">
+                            <!--<button class="btn btn-primary btn-block">
                                 Añadir objetivo
-                            </button>
+                            </button>-->
                         </form>
                     </div>
                 </div>
@@ -67,24 +51,22 @@
         
         $producto = $_POST['producto'];
         $costo = $_POST['costo'];
-        $nel = null;
 
         $conn1 = mysqli_connect(SERVIDOR,USERNAME,PASSWORD) or die(mysqli_error());
 
         $basedatos1 = mysqli_select_db($conn1, BASEDATOS) or die(mysqli_error());
 
-        $sqlcrear = "INSERT INTO objetivo (id, producto, costo) 
-        VALUES('$nel', '$producto','$costo')";
+        $sqlcrear = "INSERT INTO objetivo (producto, costo) VALUES('$producto','$costo')";
 
         //echo $sqlcrear;
         $res = mysqli_query($conn1, $sqlcrear);
 
         if($res == true){
             //$_SESSION['crear'] = "Tarea creada exitosamente!!";
-            header('location:'.URLSITIO);
+            header('location: http://localhost/Proyecto/Vistas/Pantalla/examples/icons.php');
         }else{
             //$_SESSION['error_crear'] = "Error al crear la tarea!!";
-            header('location:'.URLSITIO.'objetivos.php');
+            header('location: http://localhost/Proyecto/Vistas/Pantalla/objetivos.php');
         }
     }
 ?>

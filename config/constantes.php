@@ -6,6 +6,6 @@
     define('PASSWORD','1234');
     define('BASEDATOS','foraneo');
 
-    define('URLSITIO','http://localhost/Proyecto/Vistas/Pantalla/examples/icons.php');
+    define('URLSITIO','http://localhost/Proyecto/Vistas/');
 
 ?>
