@@ -1,3 +1,7 @@
+<?php
+     include('../../../config/constantes.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,7 +39,7 @@
                         {{/if}}
                     </div>-->
                     <div class="card-footer">
-                        <form action="/" method="POST">
+                        <form action="" method="POST">
                             <div class="form-group">
                                 <h5>Producto</h5>
                                 <input type="text" name="producto"  class="form-control">
@@ -57,3 +61,30 @@
 </body>
 
 </html>
+
+<?php
+    if(isset($_POST['submit'])){
+        
+        $producto = $_POST['producto'];
+        $costo = $_POST['costo'];
+        $nel = null;
+
+        $conn1 = mysqli_connect(SERVIDOR,USERNAME,PASSWORD) or die(mysqli_error());
+
+        $basedatos1 = mysqli_select_db($conn1, BASEDATOS) or die(mysqli_error());
+
+        $sqlcrear = "INSERT INTO objetivo (id, producto, costoa) 
+        VALUES('$nel', '$producto','$costo')";
+
+        //echo $sqlcrear;
+        $res = mysqli_query($conn1, $sqlcrear);
+
+        if($res == true){
+            //$_SESSION['crear'] = "Tarea creada exitosamente!!";
+            header('location:'.URLSITIO);
+        }else{
+            //$_SESSION['error_crear'] = "Error al crear la tarea!!";
+            header('location:'.URLSITIO.'objetivos.php');
+        }
+    }
+?>

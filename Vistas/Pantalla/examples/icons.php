@@ -1,3 +1,7 @@
+<?php
+     include('../../../config/constantes.php');
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -47,7 +51,7 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="../login/login.html">
-                <img src="/Pantalla/assets/img/icons/salida.png" alt="">
+                <img src="/Vistas/Pantalla/assets/img/icons/salida.png" alt="">
                 <span class="nav-link-text">Salir</span>
               </a>
             </li>
@@ -154,7 +158,6 @@
                     </div>
                   </div>
                   <div class="table-responsive">
-                    <!-- Projects table -->
                     <table class="table align-items-center table-flush">
                       <thead class="thead-light">
                         <tr>
@@ -164,78 +167,41 @@
                           <th scope="col">Progreso</th>
                         </tr>
                       </thead>
-                      <!--<tbody>
-                        <tr>
-                          <th scope="row">
-                            /argon/
-                          </th>
-                          <td>
-                            4,569
-                          </td>
-                          <td>
-                            340
-                          </td>
-                          <td>
-                            <i class="fas fa-arrow-up text-success mr-3"></i> 46,53%
-                          </td>
-                        </tr>
-                        <tr>
-                          <th scope="row">
-                            /argon/index.html
-                          </th>
-                          <td>
-                            3,985
-                          </td>
-                          <td>
-                            319
-                          </td>
-                          <td>
-                            <i class="fas fa-arrow-down text-warning mr-3"></i> 46,53%
-                          </td>
-                        </tr>
-                        <tr>
-                          <th scope="row">
-                            /argon/charts.html
-                          </th>
-                          <td>
-                            3,513
-                          </td>
-                          <td>
-                            294
-                          </td>
-                          <td>
-                            <i class="fas fa-arrow-down text-warning mr-3"></i> 36,49%
-                          </td>
-                        </tr>
-                        <tr>
-                          <th scope="row">
-                            /argon/tables.html
-                          </th>
-                          <td>
-                            2,050
-                          </td>
-                          <td>
-                            147
-                          </td>
-                          <td>
-                            <i class="fas fa-arrow-up text-success mr-3"></i> 50,87%
-                          </td>
-                        </tr>
-                        <tr>
-                          <th scope="row">
-                            /argon/profile.html
-                          </th>
-                          <td>
-                            1,795
-                          </td>
-                          <td>
-                            190
-                          </td>
-                          <td>
-                            <i class="fas fa-arrow-down text-danger mr-3"></i> 46,53%
-                          </td>
-                        </tr>
-                      </tbody>-->
+                      <tbody class="list">
+                        <?php
+                          $conn=mysqli_connect(SERVIDOR,USERNAME,PASSWORD,'') or die(mysqli_error());
+                            $basedatos=mysqli_select_db($conn,BASEDATOS);
+                            $sql="SELECT * FROM objetivo";
+                            $res=mysqli_query($conn,$sql);
+                            if($ress=true){
+                              //se ejecuto la sentencias
+                              $numfilas=mysqli_num_rows($res);
+                              if($numfilas>0){
+                                while($fila=mysqli_fetch_assoc($res)){
+                                  $id=$fila['id'];
+                                  $producto=$fila['producto'];
+                                  $costo=$fila['costo'];
+                                  ?>
+                                                        
+                                  <tr>
+                                    <td><?php echo $producto?></td>
+                                    <td><?php echo $costo?></td>
+                                    <td><?php echo $producto?></td>
+                                    <td><?php echo $costo?></td>
+                                  </tr>
+                                  <?php
+                                }
+                              }else{
+                                //no existe datos
+                                ?>
+                                <tr>
+                                  <td colspan='4'>Aun no se han agregado productos</td>
+                                </tr>
+                                <?php
+                              }
+                            }
+                        ?>
+                      </tbody>
                     </table>
                   </div>
                 </div>
@@ -244,7 +210,6 @@
           </div>
         </div>
       </div>
-      <!-- Footer -->
       <footer class="footer pt-0">
         <div class="row align-items-center justify-content-lg-between">
           <div class="col-lg-6">
