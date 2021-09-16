@@ -73,7 +73,7 @@
 
         $basedatos1 = mysqli_select_db($conn1, BASEDATOS) or die(mysqli_error());
 
-        $sqlcrear = "INSERT INTO objetivo (id, producto, costoa) 
+        $sqlcrear = "INSERT INTO objetivo (id, producto, costo) 
         VALUES('$nel', '$producto','$costo')";
 
         //echo $sqlcrear;

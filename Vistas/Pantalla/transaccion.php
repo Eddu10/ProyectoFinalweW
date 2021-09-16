@@ -1,3 +1,7 @@
+<?php
+     include('../../../config/constantes.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -75,3 +79,32 @@
 </body>
 
 </html>
+
+<?php
+    if(isset($_POST['submit'])){
+        
+        $tipo = $_POST['tipo'];
+        $monto = $_POST['monto'];
+        $fecha = $_POST['fecha'];
+        $descripcion = $_POST['descripcion'];
+        $nel = null;
+
+        $conn1 = mysqli_connect(SERVIDOR,USERNAME,PASSWORD) or die(mysqli_error());
+
+        $basedatos1 = mysqli_select_db($conn1, BASEDATOS) or die(mysqli_error());
+
+        $sqlcrear = "INSERT INTO transaccion (id, tipo, monto, fecha, descripcion) 
+        VALUES('$nel', '$tippo','$monto', '$fecha', '$descripcion')";
+
+        //echo $sqlcrear;
+        $res = mysqli_query($conn1, $sqlcrear);
+
+        if($res == true){
+            //$_SESSION['crear'] = "Tarea creada exitosamente!!";
+            header('location:'.URLSITIO);
+        }else{
+            //$_SESSION['error_crear'] = "Error al crear la tarea!!";
+            header('location:'.URLSITIO.'transaccion.php');
+        }
+    }
+?>
