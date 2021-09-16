@@ -27,8 +27,8 @@
     <div class="scrollbar-inner">
       <!-- Brand -->
       <div class="sidenav-header  align-items-center">
-        <a class="navbar-brand" href="javascript:void(0)">
-          <img src="../assets/img/brand/blue.png" class="navbar-brand-img" alt="...">
+        <a>
+          <img src="../assets/img/brand/blue.png"  width="120" height="120" alt="">
         </a>
       </div>
       <div class="navbar-inner">
@@ -44,14 +44,14 @@
             </li>
             <li class="nav-item">
               <a class="nav-link active" href="icons.php">
-                <img src="/Pantalla/assets/img/icons/objetivos.png" alt="">
+                <img src="../assets/img/icons/objetivos.png" alt="">
                 
                 <span class="nav-link-text">Objetivos</span>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="../../login/login.php">
-                <img src="/Vistas/Pantalla/assets/img/icons/salida.png" alt="">
+                <img src="../assets/img/icons/salida.png" alt="">
                 <span class="nav-link-text">Salir</span>
               </a>
             </li>
@@ -81,32 +81,6 @@
               <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 
               </a>
-              <!--<div class="dropdown-menu  dropdown-menu-right ">
-                <div class="dropdown-header noti-title">
-                  <h6 class="text-overflow m-0">Welcome!</h6>
-                </div>
-                <a href="#!" class="dropdown-item">
-                  <i class="ni ni-single-02"></i>
-                  <span>My profile</span>
-                </a>
-                <a href="#!" class="dropdown-item">
-                  <i class="ni ni-settings-gear-65"></i>
-                  <span>Settings</span>
-                </a>
-                <a href="#!" class="dropdown-item">
-                  <i class="ni ni-calendar-grid-58"></i>
-                  <span>Activity</span>
-                </a>
-                <a href="#!" class="dropdown-item">
-                  <i class="ni ni-support-16"></i>
-                  <span>Support</span>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a href="#!" class="dropdown-item">
-                  <i class="ni ni-user-run"></i>
-                  <span>Logout</span>
-                </a>
-              </div>-->
             </li>
           </ul>
         </div>
@@ -120,18 +94,7 @@
           <div class="row align-items-center py-4">
             <div class="col-lg-6 col-7">
               <h6 class="h2 text-white d-inline-block mb-0">Objetivos</h6>
-              <!--<nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
-                <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                  <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
-                  <li class="breadcrumb-item"><a href="#">Components</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Icons</li>
-                </ol>
-              </nav>-->
             </div>
-            <!--<div class="col-lg-6 col-5 text-right">
-              <a href="#" class="btn btn-sm btn-neutral">Nueva transacción</a>
-              <a href="#" class="btn btn-sm btn-neutral">Filters</a>
-            </div>-->
           </div>
         </div>
       </div>
@@ -163,8 +126,6 @@
                         <tr>
                           <th scope="col">Producto</th>
                           <th scope="col">Costo</th>
-                          <th scope="col">Ahorro</th>
-                          <th scope="col">Progreso</th>
                         </tr>
                       </thead>
                       <tbody class="list">
@@ -178,16 +139,17 @@
                               $numfilas=mysqli_num_rows($res);
                               if($numfilas>0){
                                 while($fila=mysqli_fetch_assoc($res)){
-                                  $id=$fila['id'];
                                   $producto=$fila['producto'];
                                   $costo=$fila['costo'];
+
+                                  $ahorro_actual=($_GET["ahorro_actual"]);
+
                                   ?>
                                                         
                                   <tr>
                                     <td><?php echo $producto?></td>
                                     <td><?php echo $costo?></td>
-                                    <td><?php echo $producto?></td>
-                                    <td><?php echo $costo?></td>
+                                    <td><?php echo $ahorro_actual?></td>
                                   </tr>
                                   <?php
                                 }
@@ -195,12 +157,13 @@
                                 //no existe datos
                                 ?>
                                 <tr>
-                                  <td colspan='4'>Aun no se han agregado productos</td>
+                                  <td colspan='2'>Aun no se han agregado productos</td>
                                 </tr>
                                 <?php
                               }
                             }
                         ?>
+
                       </tbody>
                     </table>
                   </div>

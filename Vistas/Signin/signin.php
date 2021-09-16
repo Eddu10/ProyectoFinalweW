@@ -40,9 +40,16 @@
 			<div class="login100-more" style="background-image: url('images/5053309.jpg');"></div>
 
 			<div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50" >
-				<form class="login100-form validate-form" action="" method="POST">
+				<form class="login100-form validate-form" method="POST">
+					<h2>Registro</h2>
 					<span class="login100-form-title p-b-59">
 					</span>
+
+					<div class="wrap-input100 validate-input" data-validate="Usuario es requerido">
+						<span class="label-input100">Nombre de Usuario</span>
+						<input class="input100" type="text" name="usuario">
+						<span class="focus-input100"></span>
+					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Nombre es requerido">
 						<span class="label-input100">Nombre Completo</span>
@@ -56,12 +63,6 @@
 						<span class="focus-input100"></span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate="Usuario es requerido">
-						<span class="label-input100">Nombre de Usuario</span>
-						<input class="input100" type="text" name="usuario">
-						<span class="focus-input100"></span>
-					</div>
-
 					<div class="wrap-input100 validate-input" data-validate = "Contraseña requerida">
 						<span class="label-input100">Contraseña</span>
 						<input class="input100" type="text" name="contrasena" placeholder="*************">
@@ -71,7 +72,7 @@
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
-							<input class="login100-form-btn" type="submit" name="submit" value="Registrarse">
+							<a href="../login/login.php"><input class="login100-form-btn" type="submit" name="submit" value="Registrarse"></a>	
 						</div>
 
 						<a href="../login/login.php" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30">
@@ -111,7 +112,6 @@
         $nombre = $_POST['nombre'];
         $correo = $_POST['correo'];
         $contrasena = $_POST['contrasena'];
-
         $conn1 = mysqli_connect(SERVIDOR,USERNAME,PASSWORD) or die(mysqli_error());
 
         $basedatos1 = mysqli_select_db($conn1, BASEDATOS) or die(mysqli_error());
@@ -121,13 +121,5 @@
 
         //echo $sqlcrear;
         $res = mysqli_query($conn1, $sqlcrear);
-
-        if($res == true){
-            //$_SESSION['crear'] = "Tarea creada exitosamente!!";
-            header('location: http://localhost/Proyecto/Vistas/Pantalla/examples/dashboard.php');
-        }else{
-            //$_SESSION['error_crear'] = "Error al crear la tarea!!";
-            header('location: http://localhost/Proyecto/Vistas/Signin/signin.php');
-        }
     }
 ?>

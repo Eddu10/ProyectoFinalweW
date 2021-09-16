@@ -27,8 +27,8 @@
     <div class="scrollbar-inner">
       <!-- Brand -->
       <div class="sidenav-header  align-items-center">
-        <a class="navbar-brand" href="javascript:void(0)">
-          <img src="../assets/img/brand/blue.png" class="navbar-brand-img" alt="...">
+        <a>
+          <img src="../assets/img/brand/blue.png"  width="120" height="120" alt="">
         </a>
       </div>
       <div class="navbar-inner">
@@ -44,13 +44,13 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="icons.php">
-                <img src="/Pantalla/assets/img/icons/objetivos.png" alt="">
+                <img src="../assets/img/icons/objetivos.png" alt="">
                 <span class="nav-link-text">Objetivos</span>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="../../login/login.php">
-                <img src="/Vistas/Pantalla/assets/img/icons/salida.png" alt="">
+                <img src="../assets/img/icons/salida.png" alt="">
                 <span class="nav-link-text">Salir</span>
               </a>
             </li>
@@ -109,7 +109,46 @@
                   <div class="row">
                     <div class="col">
                       <h5 class="card-title text-uppercase text-muted mb-0">Saldo Actual</h5>
-                      <span class="h2 font-weight-bold mb-0">924</span>
+                      <?php
+                          $conn=mysqli_connect(SERVIDOR,USERNAME,PASSWORD,'') or die(mysqli_error());
+                            $basedatos=mysqli_select_db($conn,BASEDATOS);
+                            $sql="SELECT * FROM transaccion";
+                            $res=mysqli_query($conn,$sql);
+                            $monto_actual=0;
+                            $ingreso = "Ingreso";
+                            $egreso = "Egreso";
+                            if($ress=true){
+                              //se ejecuto la sentencias
+                              $numfilas=mysqli_num_rows($res);
+                              if($numfilas>0){
+                                
+                                while($fila=mysqli_fetch_assoc($res)){
+                                  $tipo_tr=$fila['tipo_tr'];
+                                  $monto=$fila['monto'];  
+                                  if ($tipo_tr == $ingreso) {
+                                    $monto_actual=$monto_actual+$monto;
+                                  }
+                                  if ($tipo_tr == $egreso){
+                                    $monto_actual=$monto_actual-$monto;
+                                  }
+                                  ?>
+                                  <?php
+                                }
+                                ?>
+                                  <tr>
+                                    <td><?php echo $monto_actual?></td>
+                                  </tr>
+                                  <?php 
+                              }else{
+                                //no existe datos
+                                ?>
+                                <tr>
+                                  <td colspan='4'>No hay saldo actual</td>
+                                </tr>
+                                <?php
+                              }
+                            }
+                        ?>
                     </div>
                     <div class="col-auto">
                       <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
@@ -130,7 +169,45 @@
                   <div class="row">
                     <div class="col">
                       <h5 class="card-title text-uppercase text-muted mb-0">Ahorro</h5>
-                      <span class="h2 font-weight-bold mb-0">49,65%</span>
+                      <?php
+                          $conn=mysqli_connect(SERVIDOR,USERNAME,PASSWORD,'') or die(mysqli_error());
+                            $basedatos=mysqli_select_db($conn,BASEDATOS);
+                            $sql="SELECT * FROM transaccion";
+                            $res=mysqli_query($conn,$sql);
+                            $ahorro_actual=0;
+                            if($ress=true){
+                              //se ejecuto la sentencias
+                              $numfilas=mysqli_num_rows($res);
+                              if($numfilas>0){
+                                
+                                while($fila=mysqli_fetch_assoc($res)){
+                                  $tipo_tr=$fila['tipo_tr'];
+                                  $monto=$fila['monto'];
+                                  ?>
+                                   
+                                  <?php  
+                                  if ($tipo_tr == "Ahorro") {
+                                    $ahorro_actual=$ahorro_actual+$monto;
+                                  }
+                                  ?>
+                                  <a href="icons.php?ahorro_actual"></a>
+                                  <?php  
+                                }
+                                ?>
+                                <tr>
+                                  <td><?php echo $ahorro_actual?></td>
+                                </tr>
+                                  <?php
+                              }else{
+                                //no existe datos
+                                ?>
+                                <tr>
+                                  <td colspan='4'>No existe ahorro</td>
+                                </tr>
+                                <?php
+                              }
+                            }
+                        ?>
                     </div>
                     <div class="col-auto">
                       <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
